@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh
+}
+
+#board {
+    padding-top:20px;
+    background-color: cornflowerblue;
+    margin: auto;
+    height: 100%;
+}
+
+.board-row {
+    max-width: 700px;
+    margin: auto;
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.card {
+    background-color: rgb(226, 197, 255);
+    width: 150px;
+    height: 150px;  
+}

@@ -533,12 +533,12 @@ Moon Card
 }
 
 .moon {
-    border: 2px solid black;
+    border: 1px solid black;
     position: absolute;
     background-color: white;
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: 93px;
+    width: 93px;
     top: 30px;
     left: 30px;
 }
@@ -553,8 +553,8 @@ Moon Card
     height: 100px;
     width: 100px;
     background-color: rgb(75, 0, 124);
-    top: 30px;
-    left:50px;
+    top: 25px;
+    left: 45px;
 } 
 
 .card.matched .moon-cover {
@@ -576,14 +576,16 @@ Moon Card
     }
 }
 
-.moon-cover [class*=petal] {
-    height: 95px;
-    width: 95px;
+.moon-cover[class*=petal] {
+    top:30px;
+    left: 50px;
+    height: 93px;
+    width: 93px;
 }
 
 .petal-top {
     box-sizing: border-box;
-    border: 2px solid black;
+    border: 1px solid black;
     background-color: white;
 }
 
@@ -603,7 +605,7 @@ Moon Card
 
 .petal-right {
     box-sizing: border-box;
-    border: 2px solid black;
+    border: 1px solid black;
     background-color: white;
 }
 
@@ -622,7 +624,7 @@ Moon Card
 
 .petal-bottom {
     box-sizing: border-box;
-    border: 2px solid black;
+    border: 1px solid black;
     background-color: white;
 }
 

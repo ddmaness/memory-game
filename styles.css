@@ -20,7 +20,551 @@ body{
 }
 
 .card {
-    background-color: rgb(226, 197, 255);
+    background-color: rgb(2, 85, 67);
     width: 150px;
-    height: 150px;  
+    height: 150px;
+}
+
+/*
+============================================
+
+Square Card
+
+============================================
+*/
+
+.square {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    background-color: white;
+    top: 40px;
+    left: 40px;
+    animation: square-rotate 2s forwards;
+}
+  
+@keyframes square-rotate {
+    100% {
+        left: 120px;
+        top: 120px;
+        transform: rotate(45deg) scale(3);
+    }
+} 
+  
+.small-square {
+    position: absolute;
+    top: 80px;
+    left: 80px;  
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    animation: small-square-slide 2s 1s forwards;
+}
+  
+@keyframes small-square-slide {
+    100% {
+        top: 20px;
+        left: 20px;
+    }
+}
+
+/*
+============================================
+
+Circle Card
+
+============================================
+*/
+
+.circle-card { 
+    overflow: hidden;
+}
+  
+.circle {
+    position: relative;
+    z-index: 1;
+    top: 35px;
+    left: 35px;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    animation: circle-horizon 3s forwards;
+}
+
+@keyframes circle-horizon {
+    100% {
+        transform: scale(5) translate(0, 45px);
+    }
+}
+
+.circle-sun {
+    visibility: hidden;
+    position: absolute;
+    border-radius: 50%;
+    left: 20px;
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    animation: circle-sun-rise 5s 1s forwards;
+}
+
+@keyframes circle-sun-rise {
+    100% {
+        visibility: visible;
+        transform: translate(0, -60px);
+    }
+}
+
+/*
+============================================
+
+Hollow Circle Card
+
+============================================
+*/
+
+.hollow-circle {
+    top: 40px;
+    left: 40px;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 16px solid white;
+}
+
+@keyframes hollow-circle-1 {
+    100%{
+        top: 15px;
+        left: 15px;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.hollow-circle-1 {
+    animation: hollow-circle-1 2s forwards;
+}
+
+@keyframes hollow-circle-2 {
+    100%{
+        top: 65px;
+        left: 65px;
+        width: 0;
+        height: 0;
+    }
+}
+
+.hollow-circle-2 {
+    animation: hollow-circle-2 2s forwards;
+}
+
+/*
+============================================
+
+Hollow Square Card
+
+============================================
+*/
+
+.hollow-rect{
+    position: absolute;
+    top: 45px;
+    left: 45px;
+    box-sizing: border-box;
+    height: 75px;
+    width: 75px;
+    border: white solid 20px;
+    }
+
+@keyframes hollow-rect-1{
+    50%{
+        transform: translate(-37px);
+    }
+    100% {
+        transform: translate(-37px, -37px);
+    }
+}
+
+.hollow-rect-1 {
+    animation: hollow-rect-1 500ms forwards;
+}
+
+@keyframes hollow-rect-2{
+    25%{
+        transform: translate(-37px);
+    }
+    50% {
+        transform: translate(-37px, -37px);
+    }
+    100% {
+        transform: rotate3d(0, 1, 0, 180deg) translate(-38px, -37px)
+    }
+}
+
+.hollow-rect-2 {
+    animation: hollow-rect-2 1s forwards;
+}
+
+@keyframes hollow-rect-3{
+    17%{
+        transform: translate(-37px);
+    }
+    33% {
+        transform: translate(-37px, -37px);
+    }
+    66% {
+        transform: rotate3d(0, 1, 0, 180deg) translate(-38px, -37px)
+    }
+    100% {
+        transform: rotate3d(0, 0, 1, 180deg) translate(-38px, -38px)
+    } 
+}
+
+.hollow-rect-3 {
+    animation: hollow-rect-3 1500ms forwards;
+}
+
+@keyframes hollow-rect-4{
+    13%{
+        transform: translate(-37px);
+    }
+    25% {
+        transform: translate(-37px, -37px);
+    }
+    50% {
+        transform: rotate3d(0, 1, 0, 180deg) translate(-38px, -37px)
+    }
+    75% {
+        transform: rotate3d(0, 0, 1, 180deg) translate(-38px, -38px)
+    }
+    100% {
+        transform: rotate3d(1, 0, 0, -180deg) translate(-37px, -38px)
+    }
+}
+
+.hollow-rect-4 {
+    animation: hollow-rect-4 2s forwards;
+}
+
+/*
+============================================
+
+Cone Card
+
+============================================
+*/
+
+.cone-circle {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    height:50px;
+    width:60px;
+    background-color: white;
+    border-radius: 50%;
+    animation: cone-circle-balance 4s forwards;
+}
+
+.cone-triangle {
+    position: absolute;
+    height:0;
+    width:0;
+    top: 70px;
+    left: 50px;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 50px solid white;
+    transform-origin: 50% 100%;
+    animation: cone-triangle-rotate 4s forwards;
+}
+
+@keyframes cone-triangle-rotate {
+    25%{
+        transform: rotate(0deg) translate(0, 40px);
+    }
+    50%{
+        transform: rotate(180deg) translate(0, 40px);
+    }
+    85%{
+        border-left: 30px solid transparent;
+        border-right: 30px solid transparent;
+        left: 50px;
+    }
+    100% {
+        transform: rotate(180deg) translate(0, 40px);
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        left: 60px;
+    }
+}
+
+@keyframes cone-circle-balance{
+    25%{
+        transform: translate(0, -15px);
+    }
+    50% {
+        transform: translate(0, -15px) rotate(90deg);
+    }
+    65% {
+        transform: translate(-5px, -15px) rotate(80deg);
+    }
+    85% {
+        transform: translate(5px, -15px) rotate(100deg);
+    }
+    100% {
+        transform: translate(0, 0px) rotate(90deg);
+    }
+}
+
+/*
+============================================
+
+Triangle Card
+
+============================================
+*/
+
+.triangle{
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    height: 0;
+    width: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 70px solid white;
+}
+
+@keyframes spin-1 {
+    100%{
+        transform: rotate(90deg);
+    }
+}
+
+.triangle-1 {
+    animation: spin-1 5s forwards;
+}
+
+@keyframes spin-2 {
+    100%{
+        transform: rotate(60deg);
+    }
+}
+
+.triangle-2 {
+    animation: spin-2 5s forwards;
+}
+
+@keyframes spin-3 {
+    100%{
+        transform: rotate(30deg);
+    }
+}
+
+.triangle-3 {
+    animation: spin-3 5s forwards;
+}
+
+@keyframes container-rotate {
+    100% {
+        transform: rotate(120deg) translate(5px, -15px);
+    }
+}
+
+.triangle-container {
+    height:100%;
+    width:100%;
+    animation: container-rotate 5s forwards;
+}
+
+/*
+============================================
+
+X Card
+
+============================================
+*/
+
+.line{
+    height: 80px;
+    width: 10px;
+    background-color: white;
+    position: absolute;
+    top: 42px;
+    left: 78px;
+}
+
+[class*=line-]{
+    visibility: hidden;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.left {
+    transform: rotate(45deg);
+    animation: left-rotate-split 2s forwards;
+}
+
+.right {
+    transform: rotate(-45deg);
+    animation: right-rotate-split 2s forwards;
+}
+
+@keyframes left-rotate-split {
+    0%{
+        transform: rotate(45deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg) translate(-70px);
+    }
+}
+
+@keyframes right-rotate-split {
+    0%{
+        transform: rotate(-45deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg) translate(70px);
+    }
+}
+
+@keyframes line-1-left{
+    100%{
+        transform: translate(-46px); 
+    }
+}
+
+.line-1{
+    animation: line-1-left 1s forwards 1s;
+}
+
+@keyframes line-2-left{
+    100%{
+        transform: translate(-23px); 
+    }
+}
+
+.line-2{
+    animation: line-2-left 1s forwards 1s;
+}
+
+@keyframes line-4-right{
+    100%{
+        transform: translate(23px); 
+    }
+}
+
+.line-4{
+    animation: line-4-right 1s forwards 1s;
+}
+
+@keyframes line-5-right{
+    100%{
+        transform: translate(46px); 
+    }
+}
+
+.line-5{
+    animation: line-5-right 1s forwards 1s;
+}
+
+
+/*
+============================================
+
+Moon Card
+
+============================================
+*/
+
+.moon-card {
+    overflow: hidden;
+}
+
+.moon {
+    border: 2px solid black;
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    top: 30px;
+    left: 30px;
+    animation: shift-left 1s forwards;
+}
+
+.moon-cover {
+    position: absolute;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    top: 30px;
+    left:50px;
+    animation: shift-left 1s forwards;
+}
+
+@keyframes shift-left {
+    100% {
+        transform: translate(-20px)
+    }
+}
+
+@keyframes sprout-up {
+    50% {
+        transform: translate(-20px);
+    }
+    100% {
+        transform: translate(-20px, -20px);
+    }
+}
+
+.petal-top {
+    box-sizing: border-box;
+    border: 2px solid black;
+    background-color: white;
+    animation: sprout-up 2s forwards;
+}
+
+
+@keyframes sprout-right {
+    50% {
+        transform: translate(-20px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.petal-right {
+    box-sizing: border-box;
+    border: 2px solid black;
+    background-color: white;
+    animation: sprout-right 2s forwards;
+}
+
+@keyframes sprout-down {
+    50% {
+        transform: translate(-20px);
+    }
+    100% {
+        transform: translate(-20px, 20px);
+    }
+}
+
+.petal-bottom {
+    box-sizing: border-box;
+    border: 2px solid black;
+    background-color: white;
+    animation: sprout-down 2s forwards;
 }

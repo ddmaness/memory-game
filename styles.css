@@ -4,11 +4,20 @@ body{
     height: 100vh
 }
 
+#game {
+    display: flex;
+}
+
+.score-board {
+    flex-basis: 20%;
+}
+
 #board {
     padding-top:20px;
     background-color: rgb(190, 190, 190);
     margin: auto;
     height: 100%;
+    flex-grow: 1;   
 }
 
 .board-row {

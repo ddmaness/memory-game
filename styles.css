@@ -6,7 +6,7 @@ body{
 
 #board {
     padding-top:20px;
-    background-color: cornflowerblue;
+    background-color: rgb(190, 190, 190);
     margin: auto;
     height: 100%;
 }
@@ -23,7 +23,7 @@ body{
     padding: 10px 0 0 10px;
     overflow: hidden;
     position: relative;
-    background-color: rgb(2, 85, 67);
+    background-color: rgb(75, 0, 124);
     width: 150px;
     height: 150px;
 }
@@ -454,8 +454,12 @@ X Card
 }
 
 @keyframes line-1-left{
+    0% {
+        visibility: visible;
+    }
     100%{
-        transform: translate(-46px); 
+        transform: translate(-46px);
+        visibility: visible; 
     }
 }
 
@@ -464,8 +468,12 @@ X Card
 }
 
 @keyframes line-2-left{
+    0% {
+        visibility: visible;
+    }
     100%{
         transform: translate(-23px); 
+        visibility: visible;
     }
 }
 
@@ -473,9 +481,23 @@ X Card
     animation: line-2-left 1s forwards 1s;
 }
 
+@keyframes line-3 {
+    100% {
+        visibility: visible;
+    }
+}
+
+.card.matched .line-3 {
+    animation: line-3 1ms forwards 1s;
+}
+
 @keyframes line-4-right{
+    0% {
+        visibility: visible;
+    }
     100%{
         transform: translate(23px); 
+        visibility: visible;
     }
 }
 
@@ -484,8 +506,12 @@ X Card
 }
 
 @keyframes line-5-right{
+    0% {
+        visibility: visible;
+    }
     100%{
-        transform: translate(46px); 
+        transform: translate(46px);
+        visibility: visible;
     }
 }
 
@@ -526,7 +552,7 @@ Moon Card
     border-radius: 50%;
     height: 100px;
     width: 100px;
-    background-color: black;
+    background-color: rgb(75, 0, 124);
     top: 30px;
     left:50px;
 } 
@@ -548,6 +574,11 @@ Moon Card
     100% {
         transform: translate(-20px, -20px);
     }
+}
+
+.moon-cover [class*=petal] {
+    height: 95px;
+    width: 95px;
 }
 
 .petal-top {

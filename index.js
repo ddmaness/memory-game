@@ -6,7 +6,7 @@ const shapes = {
     hollowCircle: '<div class="hollow-circle"></div><div class="hollow-circle hollow-circle-1"></div><div class="hollow-circle hollow-circle-2"></div>',
     cone: '<div class="cone-circle"></div><div class="cone-triangle"></div>',
     triangle: '<div class="triangle-container"><div class="triangle triangle-1"></div><div class="triangle triangle-2"></div><div class="triangle triangle-3"></div></div>',
-    x: '<div class="line left"></div><div class="line right"></div><div class="line right"></div><div class="line line-1 visible"></div><div class="line line-2 visible"></div><div class="line line-3 visible"></div><div class="line line-4 visible"></div><div class="line line-5 visible"></div>',
+    x: '<div class="line left"></div><div class="line right"></div><div class="line right"></div><div class="line line-1"></div><div class="line line-2"></div><div class="line line-3"></div><div class="line line-4"></div><div class="line line-5"></div>',
     moon: '<div class="moon-card"><div class="moon"></div><div class="moon-cover petal-top"></div><div class="moon-cover petal-right"></div><div class="moon-cover petal-bottom"></div><div class="moon-cover"></div></div>'
 }
 

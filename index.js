@@ -15,6 +15,8 @@ let cardToMatch = {
     html: null,
 };
 
+let score = 0;
+
 // randomly place the 8 variety of shapes onto the 16 cards in the play area
 function populateBoard() {
     const cards = Array.prototype.slice.call(document.getElementsByClassName('card'));
@@ -35,6 +37,7 @@ function populateBoard() {
 }
 
 function matchCheck(e) {
+    const scoreDisplay = document.getElementById('score')
     if (e.target === cardToMatch.element) {
         return;
     }
@@ -46,6 +49,8 @@ function matchCheck(e) {
         console.log('no Match');
         cardToMatch.element = null;
         cardToMatch.html = null;
+        score++;
+        scoreDisplay.textContent = 'Moves: ' + score;
     }
     else {
         console.log('match');
@@ -53,6 +58,8 @@ function matchCheck(e) {
         e.target.classList.add('matched')
         cardToMatch.element = null;
         cardToMatch.html = null;
+        score++;
+        scoreDisplay.textContent = 'Moves: ' + score;
     }
 }
 

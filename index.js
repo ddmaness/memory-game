@@ -40,7 +40,7 @@ function populateBoard() {
 
 function matchCheck(e) {
     const scoreDisplay = document.getElementById('score')
-    if (e.target === cardToMatch.element) {
+    if (e.target === cardToMatch.element || e.target.classList.contains('matched')) {
         return;
     }
     else if (cardToMatch.element === null) {

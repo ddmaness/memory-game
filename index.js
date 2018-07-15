@@ -10,7 +10,10 @@ const shapes = {
     moon: '<div class="moon-card"><div class="moon"></div><div class="moon-cover petal-top"></div><div class="moon-cover petal-right"></div><div class="moon-cover petal-bottom"></div><div class="moon-cover"></div></div>'
 }
 
-let cardToMatch = null;
+let cardToMatch = {
+    element: null,
+    html: null,
+};
 
 // randomly place the 8 variety of shapes onto the 16 cards in the play area
 function populateBoard() {
@@ -32,18 +35,23 @@ function populateBoard() {
 }
 
 function matchCheck(e) {
-    if (cardToMatch === null) {
-        cardToMatch = e.target.innerHTML;
+    if (e.target === cardToMatch.element) {
+        return;
     }
-    else if (e.target.innerHTML !== cardToMatch) {
+    else if (cardToMatch.element === null) {
+        cardToMatch.html = e.target.innerHTML;
+        cardToMatch.element = e.target;
+    }
+    else if (e.target.innerHTML !== cardToMatch.html) {
         console.log('no Match');
-        cardToMatch = null;
+        cardToMatch.element = null;
+        cardToMatch.html = null;
     }
     else {
         console.log('match');
-        cardToMatch = null;
+        cardToMatch.element = null;
+        cardToMatch.html = null;
     }
-    e.stopPropagation();
 }
 
 populateBoard();

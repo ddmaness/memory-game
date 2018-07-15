@@ -25,9 +25,25 @@ function populateBoard() {
     while (shapesArr.length !== 0) {
         const index = Math.floor(Math.random() * shapesArr.length);
         const htmlToAdd = shapesArr.splice(index, 1);
+        cards[cardIndex].addEventListener('click',matchCheck, true);
         cards[cardIndex].innerHTML =  htmlToAdd;
         cardIndex++;
     }
+}
+
+function matchCheck(e) {
+    if (cardToMatch === null) {
+        cardToMatch = e.target.innerHTML;
+    }
+    else if (e.target.innerHTML !== cardToMatch) {
+        console.log('no Match');
+        cardToMatch = null;
+    }
+    else {
+        console.log('match');
+        cardToMatch = null;
+    }
+    e.stopPropagation();
 }
 
 populateBoard();

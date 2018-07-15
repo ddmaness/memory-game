@@ -49,6 +49,8 @@ function matchCheck(e) {
     }
     else {
         console.log('match');
+        cardToMatch.element.classList.add('matched');
+        e.target.classList.add('matched')
         cardToMatch.element = null;
         cardToMatch.html = null;
     }

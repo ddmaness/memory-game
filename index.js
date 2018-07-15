@@ -17,6 +17,8 @@ let cardToMatch = {
 
 let score = 0;
 
+let matches = 0;
+
 // randomly place the 8 variety of shapes onto the 16 cards in the play area
 function populateBoard() {
     const cards = Array.prototype.slice.call(document.getElementsByClassName('card'));
@@ -59,7 +61,11 @@ function matchCheck(e) {
         cardToMatch.element = null;
         cardToMatch.html = null;
         score++;
+        matches++;
         scoreDisplay.textContent = 'Moves: ' + score;
+    }
+    if (matches === 8) {
+        console.log('you win!')
     }
 }
 

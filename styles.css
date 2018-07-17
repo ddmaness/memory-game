@@ -44,6 +44,21 @@ body.checking {
     transform: rotatey(180deg);
 }
 
+@keyframes shake {
+    20% {
+        transform: rotatey(180deg) rotate(5deg);
+    }
+    40% {
+        transform: rotatey(180deg) rotate(-5deg);
+    }
+    60% {
+        transform: rotatey(180deg) rotate(5deg);
+    }
+    80% {
+        transform: rotatey(180deg) rotate(-5deg);
+    }
+}
+
 .card {
     padding: 10px 0 0 10px;
     overflow: hidden;
@@ -52,6 +67,10 @@ body.checking {
     width: 150px;
     height: 150px;
     transform: rotateY(180deg);
+}
+
+.card.incorrect {
+    animation: shake 500ms 500ms;
 }
 
 .card * {
@@ -74,7 +93,6 @@ body.checking {
     height:100%;
     width:100%;
     background-color: greenyellow;
-
 }
 
 /*

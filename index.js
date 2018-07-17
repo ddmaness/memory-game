@@ -67,11 +67,15 @@ function matchCheck(e) {
     }
     else if (target.innerHTML !== cardToMatch.html) {
         target.parentNode.classList.add('selected');
+        target.classList.add('incorrect');
+        cardToMatch.element.classList.add('incorrect');
         document.body.classList.add('checking');
         score++;
         setTimeout(function() {
             cardToMatch.element.parentNode.classList.remove('selected');
             target.parentNode.classList.remove('selected');
+            target.classList.remove('incorrect');
+            cardToMatch.element.classList.remove('incorrect');
             cardToMatch.element = null;
             cardToMatch.html = null;
             scoreDisplay.textContent = 'Moves: ' + score;

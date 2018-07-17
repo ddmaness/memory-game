@@ -10,27 +10,35 @@ const shapes = {
     moon: '<div class="moon-card"><div class="moon"></div><div class="moon-cover petal-top"></div><div class="moon-cover petal-right"></div><div class="moon-cover petal-bottom"></div><div class="moon-cover"></div></div>'
 }
 
+// Capture first card clicked to match later
 let cardToMatch = {
     element: null,
     html: null,
 };
 
+// Track number of guesses
 let score = 0;
 
+// Track number of successful matches
 let matches = 0;
 
+// Track seconds passed
 let timer = 0;
 
+// Initialize timer
 let timeStamp = setInterval(time, 1000);
 
+// Parse and display playtime
 function time() {
-    const timeDisplay = document.getElementById('timer');
     timer++;
+    const timeDisplay = document.getElementById('timer');
     const seconds = timer % 60 > 9 ? timer % 60 : '0' + timer % 60;
     const minutes = Math.floor(timer/60) > 9 ? Math.floor(timer/60) : '0' + Math.floor(timer/60);
+    // Display time in 00:00 format
     timeDisplay.textContent = minutes + ':' + seconds 
 }
 
+// Displays appropiate number of stars based on number of guesses (3 for less than 16, 2 for less than 24, or 1 if more)
 function starChecker() {
     if (score > 16 && score < 24) {
         document.getElementById('stars').innerHTML = '&#9733; &#9733; &#9734;'
@@ -40,95 +48,133 @@ function starChecker() {
     }
 }
 
-// randomly place the 8 variety of shapes onto the 16 cards in the play area
+// Capture data from and apply animation to the first card clicked
+function firstCardClicked(target) {
+    cardToMatch.html = target.innerHTML;
+    cardToMatch.element = target;
+    target.parentNode.classList.add('selected');
+}
+
+// Handle an incorrect match when second card is clicked
+function noMatch(target, scoreDisplay) {
+    // trigger animations for incorrect guess 
+    target.parentNode.classList.add('selected');
+    target.classList.add('incorrect');
+    cardToMatch.element.classList.add('incorrect');
+    document.body.classList.add('checking');
+    // increment score and display appropriate number of stars
+    score++;
+    starChecker();
+    // reverse card flip animation, update score-board, and reset first card data to null
+    setTimeout(function() {
+        cardToMatch.element.parentNode.classList.remove('selected');
+        target.parentNode.classList.remove('selected');
+        target.classList.remove('incorrect');
+        cardToMatch.element.classList.remove('incorrect');
+        cardToMatch.element = null;
+        cardToMatch.html = null;
+        scoreDisplay.textContent = 'Moves: ' + score;
+        document.body.classList.remove('checking');
+    },1000);
+}
+
+// Handle a correct guess when second card is clicked
+function match(target, scoreDisplay) {
+    // apply card flip animation when second card is clicked
+    document.body.classList.add('checking');
+    target.parentNode.classList.add('selected');
+    target.classList.add('correct');
+    cardToMatch.element.classList.add('correct');
+    // iterate score and match counters, then check for and display stars
+    matches++;
+    score++;
+    starChecker();
+    // trigger correct guest animation for shapes in cards, reset first card data to null, update scoreboard
+    setTimeout(function() {
+        cardToMatch.element.classList.add('matched');
+        target.classList.add('matched')
+        cardToMatch.element = null;
+        cardToMatch.html = null;
+        scoreDisplay.textContent = 'Moves: ' + score;
+        document.body.classList.remove('checking');
+    }, 200);
+}
+
+// Stop timer and display modal when all matches have been discovered
+function win(target) {
+    clearInterval(timeStamp);
+    setTimeout(function() {
+        setTimeout(function() {
+            Array.prototype.slice.call(document.getElementsByClassName('selected')).forEach(function(elem) {
+                elem.classList.remove('selected');
+            });
+        }, 2000);
+        document.getElementById('results-guesses').textContent = 'Guesses: ' + score;
+        document.getElementById('results-time').textContent = 'Time: ' + document.getElementById('timer').textContent;
+        document.getElementById('results-stars').innerHTML = document.getElementById('stars').innerHTML;
+        document.getElementById('results').classList.toggle('win');
+    }, 3000);
+}
+
+// Randomly place the 8 variety of shapes onto the 16 cards in the play area
 function populateBoard() {
     const cards = Array.prototype.slice.call(document.getElementsByClassName('card'));
     cards.forEach(function(elem) {
+        // Check to see if 'correct' class is present and remove (PopulateBoard was called by 'Play Again' button)
         if (elem.classList.contains('correct')){
             elem.classList.remove('correct');
         }
     })
     let cardIndex = 0;
+    // Create an array containing the html for two of each shape to be placed on the cards
     const shapesArr = [];
     for (let shape in shapes) {
         for (let i = 0; i < 2; i++) {
             shapesArr.push(shapes[shape]);
         }
     }
+    // Place shapes onto random cards
     while (shapesArr.length !== 0) {
         const index = Math.floor(Math.random() * shapesArr.length);
         const htmlToAdd = shapesArr.splice(index, 1);
         cards[cardIndex].innerHTML =  htmlToAdd;
         cardIndex++;
     }
+    // Place and event listener for clicks on each card
     const cardFronts = Array.prototype.slice.call(document.getElementsByClassName('card-front'));
     cardFronts.forEach(function(elem){
-        elem.addEventListener('click', matchCheck, true);
+        elem.addEventListener('click', clickCard, true);
     });
 }
 
-function matchCheck(e) {
+//Handle card clicks
+function clickCard(e) {
     const scoreDisplay = document.getElementById('score');
     const target = e.target.nextElementSibling;
+    // Check to see if card has already been clicked and terminate function if so
     if (target === cardToMatch.element || target.classList.contains('matched')) {
         return;
     }
+    // Check to see if this is the first card clicked and handle it if it is
     else if (cardToMatch.element === null) {
-        cardToMatch.html = target.innerHTML;
-        cardToMatch.element = target;
-        target.parentNode.classList.add('selected');
+        firstCardClicked(target);
+        return;
     }
+    // Check to see if the second card clicked is a mismatch and handle it if it is
     else if (target.innerHTML !== cardToMatch.html) {
-        target.parentNode.classList.add('selected');
-        target.classList.add('incorrect');
-        cardToMatch.element.classList.add('incorrect');
-        document.body.classList.add('checking');
-        score++;
-        starChecker();
-        setTimeout(function() {
-            cardToMatch.element.parentNode.classList.remove('selected');
-            target.parentNode.classList.remove('selected');
-            target.classList.remove('incorrect');
-            cardToMatch.element.classList.remove('incorrect');
-            cardToMatch.element = null;
-            cardToMatch.html = null;
-            scoreDisplay.textContent = 'Moves: ' + score;
-            document.body.classList.remove('checking');
-        },1000);
+        noMatch(target, scoreDisplay);
+        return;
     }
+    // If second card is a match, handle it and check to see if is the last match
     else {
-        document.body.classList.add('checking');
-        target.parentNode.classList.add('selected');
-        target.classList.add('correct');
-        cardToMatch.element.classList.add('correct');
-        matches++;
-        score++;
-        starChecker();
-        setTimeout(function() {
-            cardToMatch.element.classList.add('matched');
-            target.classList.add('matched')
-            cardToMatch.element = null;
-            cardToMatch.html = null;
-            scoreDisplay.textContent = 'Moves: ' + score;
-            document.body.classList.remove('checking');
-        }, 200);
+        match(target, scoreDisplay);
     }
     if (matches === 8) {
-        clearInterval(timeStamp);
-        setTimeout(function() {
-            setTimeout(function() {
-                Array.prototype.slice.call(document.getElementsByClassName('selected')).forEach(function(elem) {
-                    elem.classList.remove('selected');
-                });
-            }, 2000);
-            document.getElementById('results-guesses').textContent = 'Guesses: ' + score;
-            document.getElementById('results-time').textContent = 'Time: ' + document.getElementById('timer').textContent;
-            document.getElementById('results-stars').innerHTML = document.getElementById('stars').innerHTML;
-            document.getElementById('results').classList.toggle('win');
-        }, 4000);
+        win();
     }
 }
 
+// Reset Game to starting values
 function reset() {
     document.getElementById('score').textContent = 'Moves: 0'
     document.getElementById('stars').innerHTML = '&#9733; &#9733; &#9733;'
@@ -145,4 +191,5 @@ function reset() {
     document.getElementById('results').classList.toggle('win');
 }
 
+// Establish initial gameboard;
 populateBoard();

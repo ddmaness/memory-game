@@ -32,8 +32,8 @@ body.checking {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
-    background-color: #582A72; 
+    color: #fff;
+    background-color: #582a72;
     flex-basis: 20%;
 }
 
@@ -41,7 +41,7 @@ body.checking {
     #game {
         flex-wrap: wrap;
     }
-    
+
     #score-board {
         flex-basis: 100%;
     }
@@ -49,10 +49,10 @@ body.checking {
 
 #board {
     padding-top:20px;
-    background-color: rgb(190, 190, 190);
+    background-color: #bebebe;
     margin: auto;
     height: 100%;
-    flex-grow: 1;   
+    flex-grow: 1;
 }
 
 .board-row {
@@ -101,7 +101,7 @@ body.checking {
 
 @keyframes color-change {
     100% {
-        background-color: #582A72;
+        background-color: #582a72;
     }
 }
 
@@ -109,7 +109,7 @@ body.checking {
     padding: 10px 0 0 10px;
     overflow: hidden;
     position: relative;
-    background-color: #AA3F39;
+    background-color: #aa3f39;
     width: 150px;
     height: 150px;
     -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
@@ -138,7 +138,7 @@ body.checking {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #AA3F39;
+    background-color: #aa3f39;
     -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
@@ -157,13 +157,13 @@ Game Over Modal
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #fff;
     position: absolute;
     top: -115vh;
     height:105%;
     width:100%;
     z-index: 4;
-    background-color: #582A72;
+    background-color: #582a72;
     -webkit-box-shadow: -2px 20px 43px 17px rgba(0,0,0,0.75);
     -moz-box-shadow: -2px 20px 43px 17px rgba(0,0,0,0.75);
     box-shadow: -2px 20px 43px 17px rgba(0,0,0,0.75);
@@ -175,18 +175,18 @@ Game Over Modal
 }
 
 #reset {
-    background-color: #582A72;
-    color: white;
+    background-color: #582a72;
+    color: #fff;
     height: 48px;
     min-width: 48px;
-    border: 2px solid white;
+    border: 2px solid #fff;
     transition: all 500ms;
 }
 
 #reset:hover {
-    color: #582A72;
-    background-color: white;
-    border: 2px solid #582A72;
+    color: #582a72;
+    background-color: #fff;
+    border: 2px solid #582a72;
     cursor: pointer;
 }
 
@@ -202,7 +202,7 @@ Square Card
     position: relative;
     height: 80px;
     width: 80px;
-    background-color: white;
+    background-color: #fff;
     top: 30px;
     left: 30px;
 }
@@ -210,28 +210,28 @@ Square Card
 .card.matched .square {
     animation: square-rotate 2s forwards;
 }
-  
+
 @keyframes square-rotate {
     100% {
         left: 110px;
         top: 120px;
         transform: rotate(45deg) scale(3);
     }
-} 
-  
+}
+
 .small-square {
     position: absolute;
     top: 80px;
-    left: 80px;  
+    left: 80px;
     height: 40px;
     width: 40px;
-    background-color: white;
+    background-color: #fff;
 }
 
 .card.matched .small-square {
     animation: small-square-slide 2s 1s forwards;
 }
-  
+
 @keyframes small-square-slide {
     100% {
         top: 20px;
@@ -246,7 +246,7 @@ Circle Card
 
 ============================================
 */
-  
+
 .circle {
     position: relative;
     z-index: 1;
@@ -255,7 +255,7 @@ Circle Card
     border-radius: 50%;
     width: 400px;
     height: 400px;
-    background-color: white;
+    background-color: #fff;
     transform: scale(.2);
 }
 
@@ -276,7 +276,7 @@ Circle Card
     left: 20px;
     height: 40px;
     width: 40px;
-    background-color: white;
+    background-color: #fff;
 }
 
 @keyframes circle-sun-rise {
@@ -305,7 +305,7 @@ Hollow Circle Card
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    border: 16px solid white;
+    border: 16px solid #fff;
 }
 
 @keyframes hollow-circle-1 {
@@ -349,7 +349,7 @@ Hollow Square Card
     box-sizing: border-box;
     height: 85px;
     width: 85px;
-    border: white solid 20px;
+    border: #fff solid 20px;
 }
 
 @keyframes hollow-rect-1{
@@ -393,7 +393,7 @@ Hollow Square Card
     }
     100% {
         transform: rotate3d(0, 0, 1, 180deg) translate(-38px, -38px)
-    } 
+    }
 }
 
 .card.matched .hollow-rect-3 {
@@ -436,7 +436,7 @@ Cone Card
     left: 50px;
     height:50px;
     width:60px;
-    background-color: white;
+    background-color: #fff;
     border-radius: 50%;
 }
 
@@ -452,7 +452,7 @@ Cone Card
     left: 50px;
     border-left: 30px solid transparent;
     border-right: 30px solid transparent;
-    border-top: 50px solid white;
+    border-top: 50px solid #fff;
     transform-origin: 50% 100%;
 }
 
@@ -514,7 +514,7 @@ Triangle Card
     width: 0;
     border-left: 40px solid transparent;
     border-right: 40px solid transparent;
-    border-bottom: 70px solid white;
+    border-bottom: 70px solid #fff;
 }
 
 @keyframes spin-1 {
@@ -618,7 +618,7 @@ X Card
     }
     100%{
         transform: translate(-46px);
-        visibility: visible; 
+        visibility: visible;
     }
 }
 
@@ -631,7 +631,7 @@ X Card
         visibility: visible;
     }
     100%{
-        transform: translate(-23px); 
+        transform: translate(-23px);
         visibility: visible;
     }
 }
@@ -655,7 +655,7 @@ X Card
         visibility: visible;
     }
     100%{
-        transform: translate(23px); 
+        transform: translate(23px);
         visibility: visible;
     }
 }
@@ -693,7 +693,7 @@ Moon Card
 
 .moon {
     position: absolute;
-    background-color: white;
+    background-color: #fff;
     border-radius: 50%;
     height: 93px;
     width: 93px;
@@ -710,10 +710,10 @@ Moon Card
     border-radius: 50%;
     height: 100px;
     width: 100px;
-    background-color: #AA3F39;
+    background-color: #aa3f39;
     top: 25px;
     left: 55px;
-} 
+}
 
 @keyframes shift-left {
     100% {
@@ -745,7 +745,7 @@ Moon Card
 .petal-right,
 .petal-bottom {
     box-sizing: border-box;
-    background-color: white;
+    background-color: #fff;
 }
 
 .card.matched .petal-top {

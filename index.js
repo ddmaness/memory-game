@@ -27,7 +27,8 @@ function time() {
     const timeDisplay = document.getElementById('timer');
     timer++;
     const seconds = timer % 60 > 9 ? timer % 60 : '0' + timer % 60;
-    timeDisplay.textContent = (Math.floor(timer/60)) + ':' + seconds 
+    const minutes = Math.floor(timer/60) > 9 ? Math.floor(timer/60) : '0' + Math.floor(timer/60);
+    timeDisplay.textContent = minutes + ':' + seconds 
 }
 
 

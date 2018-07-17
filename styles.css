@@ -34,6 +34,7 @@ body.checking {
 }
 
 .card-container {
+    cursor: pointer;
     width: 160px;
     transform-style: preserve-3d;
     transition: all 300ms ease-in-out;

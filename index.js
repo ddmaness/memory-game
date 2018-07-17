@@ -31,6 +31,14 @@ function time() {
     timeDisplay.textContent = minutes + ':' + seconds 
 }
 
+function starChecker() {
+    if (score > 16 && score < 24) {
+        document.getElementById('stars').innerHTML = '&#9733; &#9733; &#9734;'
+    }
+    else if (score >= 24) {
+        document.getElementById('stars').innerHTML = '&#9733; &#9734; &#9734;'
+    }
+}
 
 // randomly place the 8 variety of shapes onto the 16 cards in the play area
 function populateBoard() {
@@ -76,6 +84,7 @@ function matchCheck(e) {
         cardToMatch.element.classList.add('incorrect');
         document.body.classList.add('checking');
         score++;
+        starChecker();
         setTimeout(function() {
             cardToMatch.element.parentNode.classList.remove('selected');
             target.parentNode.classList.remove('selected');
@@ -94,6 +103,7 @@ function matchCheck(e) {
         cardToMatch.element.classList.add('correct');
         matches++;
         score++;
+        starChecker();
         setTimeout(function() {
             cardToMatch.element.classList.add('matched');
             target.classList.add('matched')
@@ -115,6 +125,7 @@ function matchCheck(e) {
 
 function reset() {
     document.getElementById('score').textContent = 'Moves: 0'
+    document.getElementById('stars').innerHTML = '&#9733; &#9733; &#9733;'
     score = 0;
     matches = 0;
     timer = 0;

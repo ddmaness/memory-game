@@ -59,11 +59,17 @@ body.checking {
     }
 }
 
+@keyframes color-change {
+    100% {
+        background-color: #7A9F35;
+    }
+}
+
 .card {
     padding: 10px 0 0 10px;
     overflow: hidden;
     position: relative;
-    background-color: rgb(75, 0, 124);
+    background-color: #226666;
     width: 150px;
     height: 150px;
     transform: rotateY(180deg);
@@ -71,6 +77,10 @@ body.checking {
 
 .card.incorrect {
     animation: shake 500ms 500ms;
+}
+
+.card.correct {
+    animation: color-change 1s forwards 1s;
 }
 
 .card * {
@@ -85,7 +95,7 @@ body.checking {
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgb(75, 0, 124);
+    background-color: #226666;
 }
 
 .results {
@@ -616,13 +626,13 @@ Moon Card
     border-radius: 50%;
     height: 100px;
     width: 100px;
-    background-color: rgb(75, 0, 124);
+    background-color: #226666;
     top: 25px;
     left: 55px;
 } 
 
 .card.matched .moon-cover {
-    animation: shift-left 1s forwards;
+    animation: shift-left 1s forwards, color-change 1s forwards;
 }
 
 @keyframes shift-left {

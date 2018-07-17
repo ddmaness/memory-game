@@ -35,6 +35,11 @@ function time() {
 // randomly place the 8 variety of shapes onto the 16 cards in the play area
 function populateBoard() {
     const cards = Array.prototype.slice.call(document.getElementsByClassName('card'));
+    cards.forEach(function(elem) {
+        if (elem.classList.contains('correct')){
+            elem.classList.remove('correct');
+        }
+    })
     let cardIndex = 0;
     const shapesArr = [];
     for (let shape in shapes) {
@@ -85,6 +90,8 @@ function matchCheck(e) {
     else {
         document.body.classList.add('checking');
         target.parentNode.classList.add('selected');
+        target.classList.add('correct');
+        cardToMatch.element.classList.add('correct');
         matches++;
         score++;
         setTimeout(function() {

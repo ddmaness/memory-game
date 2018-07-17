@@ -32,41 +32,73 @@ function populateBoard() {
     while (shapesArr.length !== 0) {
         const index = Math.floor(Math.random() * shapesArr.length);
         const htmlToAdd = shapesArr.splice(index, 1);
-        cards[cardIndex].addEventListener('click',matchCheck, true);
         cards[cardIndex].innerHTML =  htmlToAdd;
         cardIndex++;
     }
+    const cardFronts = Array.prototype.slice.call(document.getElementsByClassName('card-front'));
+    cardFronts.forEach(function(elem){
+        elem.addEventListener('click', matchCheck, true);
+    })
+
 }
 
 function matchCheck(e) {
-    const scoreDisplay = document.getElementById('score')
-    if (e.target === cardToMatch.element || e.target.classList.contains('matched')) {
+    const scoreDisplay = document.getElementById('score');
+    const target = e.target.nextElementSibling;
+    if (target === cardToMatch.element || target.classList.contains('matched')) {
         return;
     }
     else if (cardToMatch.element === null) {
-        cardToMatch.html = e.target.innerHTML;
-        cardToMatch.element = e.target;
+        cardToMatch.html = target.innerHTML;
+        cardToMatch.element = target;
+        target.parentNode.classList.add('selected');
     }
-    else if (e.target.innerHTML !== cardToMatch.html) {
-        console.log('no Match');
-        cardToMatch.element = null;
-        cardToMatch.html = null;
+    else if (target.innerHTML !== cardToMatch.html) {
+        target.parentNode.classList.add('selected');
+        document.body.classList.add('checking');
         score++;
-        scoreDisplay.textContent = 'Moves: ' + score;
+        setTimeout(function() {
+            cardToMatch.element.parentNode.classList.remove('selected');
+            target.parentNode.classList.remove('selected');
+            cardToMatch.element = null;
+            cardToMatch.html = null;
+            scoreDisplay.textContent = 'Moves: ' + score;
+            document.body.classList.remove('checking');
+        },1000);
     }
     else {
-        console.log('match');
-        cardToMatch.element.classList.add('matched');
-        e.target.classList.add('matched')
-        cardToMatch.element = null;
-        cardToMatch.html = null;
-        score++;
+        document.body.classList.add('checking');
+        target.parentNode.classList.add('selected');
         matches++;
-        scoreDisplay.textContent = 'Moves: ' + score;
+        score++;
+        setTimeout(function() {
+            cardToMatch.element.classList.add('matched');
+            target.classList.add('matched')
+            cardToMatch.element = null;
+            cardToMatch.html = null;
+            scoreDisplay.textContent = 'Moves: ' + score;
+            document.body.classList.remove('checking');
+        }, 1000);
     }
     if (matches === 8) {
-        console.log('you win!')
+        Array.prototype.slice.call(document.getElementsByClassName('selected')).forEach(function(elem) {
+            setTimeout(function() {
+                elem.classList.remove('selected');
+            }, 200);
+        })
     }
+}
+
+function reset() {
+    document.getElementById('score').textContent = 'Moves: 0'
+    score = 0;
+    matches = 0;
+    cardToMatch.element = null;
+    cardToMatch.html = null;
+    Array.prototype.slice.call(document.getElementsByClassName('matched')).forEach(function(elem) {
+        elem.classList.remove('matched');
+    });
+    populateBoard();
 }
 
 populateBoard();

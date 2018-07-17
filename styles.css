@@ -1,10 +1,15 @@
 body{
     margin: 0;
     padding: 0;
-    height: 100vh
+    height: 100vh;
+}
+
+body.checking {
+    pointer-events: none;
 }
 
 #game {
+    margin-top: -20px;
     display: flex;
 }
 
@@ -28,6 +33,16 @@ body{
     justify-content: space-between;
 }
 
+.card-container {
+    width: 160px;
+    transform-style: preserve-3d;
+    transition: all 300ms ease-in-out;
+}
+
+.card-container.selected {
+    transform: rotatey(180deg);
+}
+
 .card {
     padding: 10px 0 0 10px;
     overflow: hidden;
@@ -35,10 +50,30 @@ body{
     background-color: rgb(75, 0, 124);
     width: 150px;
     height: 150px;
+    transform: rotateY(180deg);
 }
 
 .card * {
     pointer-events: none;
+}
+
+.side {
+    backface-visibility: hidden;
+}
+
+.card-front {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(75, 0, 124);
+}
+
+.results {
+    position: absolute;
+    height:100%;
+    width:100%;
+    background-color: greenyellow;
+
 }
 
 /*
@@ -54,8 +89,8 @@ Square Card
     height: 80px;
     width: 80px;
     background-color: white;
-    top: 40px;
-    left: 40px;
+    top: 30px;
+    left: 30px;
 }
 
 .card.matched .square {
@@ -101,12 +136,13 @@ Circle Card
 .circle {
     position: relative;
     z-index: 1;
-    top: 35px;
-    left: 35px;
+    top: -130px;
+    left: -130px;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 400px;
+    height: 400px;
     background-color: white;
+    transform: scale(.2);
 }
 
 .card.matched .circle {
@@ -115,7 +151,7 @@ Circle Card
 
 @keyframes circle-horizon {
     100% {
-        transform: scale(5) translate(0, 45px);
+        transform: scale(1) translate(0, 220px);
     }
 }
 
@@ -130,13 +166,13 @@ Circle Card
 }
 
 .card.matched .circle-sun {
-    animation: circle-sun-rise 5s 1s forwards;
+    animation: circle-sun-rise 3s ease-out 1s forwards;
 }
 
 @keyframes circle-sun-rise {
     100% {
         visibility: visible;
-        transform: translate(0, -60px);
+        transform: translate(0, -390px);
     }
 }
 
@@ -549,7 +585,7 @@ Moon Card
     height: 93px;
     width: 93px;
     top: 30px;
-    left: 30px;
+    left: 35px;
 }
 
 .card.matched .moon {
@@ -563,7 +599,7 @@ Moon Card
     width: 100px;
     background-color: rgb(75, 0, 124);
     top: 25px;
-    left: 45px;
+    left: 55px;
 } 
 
 .card.matched .moon-cover {
@@ -587,7 +623,7 @@ Moon Card
 
 .moon-cover[class*=petal] {
     top:30px;
-    left: 50px;
+    left: 60px;
     height: 93px;
     width: 93px;
 }

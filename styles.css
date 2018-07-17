@@ -1,3 +1,11 @@
+/*
+============================================
+
+Play Area
+
+============================================
+*/
+
 * {
     font-family: 'PT Sans', sans-serif;
     letter-spacing: 0.2em;
@@ -136,6 +144,14 @@ body.checking {
     box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
 }
 
+/*
+================================================
+
+Game Over Modal
+
+================================================
+*/
+
 #results {
     display: flex;
     flex-direction: column;
@@ -263,15 +279,15 @@ Circle Card
     background-color: white;
 }
 
-.card.matched .circle-sun {
-    animation: circle-sun-rise 3s ease-out 1s forwards;
-}
-
 @keyframes circle-sun-rise {
     100% {
         visibility: visible;
         transform: translate(0, -390px);
     }
+}
+
+.card.matched .circle-sun {
+    animation: circle-sun-rise 3s ease-out 1s forwards;
 }
 
 /*
@@ -699,14 +715,14 @@ Moon Card
     left: 55px;
 } 
 
-.card.matched .moon-cover {
-    animation: shift-left 1s forwards, color-change 1s forwards 800ms;
-}
-
 @keyframes shift-left {
     100% {
         transform: translate(-20px)
     }
+}
+
+.card.matched .moon-cover {
+    animation: shift-left 1s forwards, color-change 1s forwards 800ms;
 }
 
 @keyframes sprout-up {
@@ -725,7 +741,9 @@ Moon Card
     width: 93px;
 }
 
-.petal-top {
+.petal-top,
+.petal-right,
+.petal-bottom {
     box-sizing: border-box;
     background-color: white;
 }
@@ -744,11 +762,6 @@ Moon Card
     }
 }
 
-.petal-right {
-    box-sizing: border-box;
-    background-color: white;
-}
-
 .card.matched .petal-right {
     animation: sprout-right 2s forwards;
 }
@@ -760,11 +773,6 @@ Moon Card
     100% {
         transform: translate(-20px, 20px);
     }
-}
-
-.petal-bottom {
-    box-sizing: border-box;
-    background-color: white;
 }
 
 .card.matched .petal-bottom {

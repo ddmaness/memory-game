@@ -1,3 +1,8 @@
+* {
+    font-family: 'PT Sans', sans-serif;
+    letter-spacing: 0.2em;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -14,7 +19,7 @@ body.checking {
     align-items: stretch;
 }
 
-.score-board {
+#score-board {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,6 +27,16 @@ body.checking {
     color: white;
     background-color: #582A72; 
     flex-basis: 20%;
+}
+
+@media screen and (max-width: 850px) {
+    #game {
+        flex-wrap: wrap;
+    }
+    
+    #score-board {
+        flex-basis: 100%;
+    }
 }
 
 #board {
@@ -33,18 +48,28 @@ body.checking {
 }
 
 .board-row {
+    display: flex;
     max-width: 700px;
     margin: auto;
+}
+
+.pair {
     display: flex;
-    margin-bottom: 20px;
-    justify-content: space-between;
 }
 
 .card-container {
     cursor: pointer;
     width: 160px;
+    margin: 8px;
     transform-style: preserve-3d;
     transition: all 300ms ease-in-out;
+}
+
+@media screen and (max-width: 700px) {
+    .board-row {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 
 .card-container.selected {
@@ -79,6 +104,9 @@ body.checking {
     background-color: #AA3F39;
     width: 150px;
     height: 150px;
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
     transform: rotateY(180deg);
 }
 
@@ -103,6 +131,9 @@ body.checking {
     height: 100%;
     width: 100%;
     background-color: #AA3F39;
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
 }
 
 #results {

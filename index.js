@@ -114,13 +114,13 @@ function matchCheck(e) {
         }, 200);
     }
     if (matches === 8) {
+        clearInterval(timeStamp);
         setTimeout(function() {
             setTimeout(function() {
                 Array.prototype.slice.call(document.getElementsByClassName('selected')).forEach(function(elem) {
                     elem.classList.remove('selected');
                 });
             }, 2000);
-            clearInterval(timeStamp);
             document.getElementById('results-guesses').textContent = 'Guesses: ' + score;
             document.getElementById('results-time').textContent = 'Time: ' + document.getElementById('timer').textContent;
             document.getElementById('results-stars').innerHTML = document.getElementById('stars').innerHTML;

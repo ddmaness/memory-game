@@ -35,16 +35,16 @@ function time() {
     const seconds = timer % 60 > 9 ? timer % 60 : '0' + timer % 60;
     const minutes = Math.floor(timer/60) > 9 ? Math.floor(timer/60) : '0' + Math.floor(timer/60);
     // Display time in 00:00 format
-    timeDisplay.textContent = minutes + ':' + seconds 
+    timeDisplay.textContent = minutes + ':' + seconds;
 }
 
 // Displays appropiate number of stars based on number of guesses (3 for less than 16, 2 for less than 24, or 1 if more)
 function starChecker() {
     if (score > 16 && score < 24) {
-        document.getElementById('stars').innerHTML = '&#9733; &#9733; &#9734;'
+        document.getElementById('stars').innerHTML = '&#9733; &#9733; &#9734;';
     }
     else if (score >= 24) {
-        document.getElementById('stars').innerHTML = '&#9733; &#9734; &#9734;'
+        document.getElementById('stars').innerHTML = '&#9733; &#9734; &#9734;';
     }
 }
 
@@ -57,7 +57,7 @@ function firstCardClicked(target) {
 
 // Handle an incorrect match when second card is clicked
 function noMatch(target, scoreDisplay) {
-    // trigger animations for incorrect guess 
+    // trigger animations for incorrect guess
     target.parentNode.classList.add('selected');
     target.classList.add('incorrect');
     cardToMatch.element.classList.add('incorrect');
@@ -92,7 +92,7 @@ function match(target, scoreDisplay) {
     // trigger correct guest animation for shapes in cards, reset first card data to null, update scoreboard
     setTimeout(function() {
         cardToMatch.element.classList.add('matched');
-        target.classList.add('matched')
+        target.classList.add('matched');
         cardToMatch.element = null;
         cardToMatch.html = null;
         scoreDisplay.textContent = 'Moves: ' + score;
@@ -129,8 +129,10 @@ function populateBoard() {
     // Create an array containing the html for two of each shape to be placed on the cards
     const shapesArr = [];
     for (let shape in shapes) {
-        for (let i = 0; i < 2; i++) {
-            shapesArr.push(shapes[shape]);
+        if (shapes.hasOwnProperty(shape)) {
+            for (let i = 0; i < 2; i++) {
+                shapesArr.push(shapes[shape]);
+            }
         }
     }
     // Place shapes onto random cards
@@ -176,8 +178,8 @@ function clickCard(e) {
 
 // Reset Game to starting values
 function reset() {
-    document.getElementById('score').textContent = 'Moves: 0'
-    document.getElementById('stars').innerHTML = '&#9733; &#9733; &#9733;'
+    document.getElementById('score').textContent = 'Moves: 0';
+    document.getElementById('stars').innerHTML = '&#9733; &#9733; &#9733;';
     score = 0;
     matches = 0;
     timer = 0;
@@ -191,5 +193,5 @@ function reset() {
     document.getElementById('results').classList.toggle('win');
 }
 
-// Establish initial gameboard;
+// Establish initial gameboard
 populateBoard();

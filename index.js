@@ -19,6 +19,18 @@ let score = 0;
 
 let matches = 0;
 
+let timer = 0;
+
+let timeStamp = setInterval(time, 1000);
+
+function time() {
+    const timeDisplay = document.getElementById('timer');
+    timer++;
+    const seconds = timer % 60 > 9 ? timer % 60 : '0' + timer % 60;
+    timeDisplay.textContent = (Math.floor(timer/60)) + ':' + seconds 
+}
+
+
 // randomly place the 8 variety of shapes onto the 16 cards in the play area
 function populateBoard() {
     const cards = Array.prototype.slice.call(document.getElementsByClassName('card'));
@@ -38,8 +50,7 @@ function populateBoard() {
     const cardFronts = Array.prototype.slice.call(document.getElementsByClassName('card-front'));
     cardFronts.forEach(function(elem){
         elem.addEventListener('click', matchCheck, true);
-    })
-
+    });
 }
 
 function matchCheck(e) {
@@ -86,6 +97,7 @@ function matchCheck(e) {
                 elem.classList.remove('selected');
             }, 200);
         })
+        clearInterval(timeStamp);
     }
 }
 
@@ -93,11 +105,13 @@ function reset() {
     document.getElementById('score').textContent = 'Moves: 0'
     score = 0;
     matches = 0;
+    timer = 0;
     cardToMatch.element = null;
     cardToMatch.html = null;
     Array.prototype.slice.call(document.getElementsByClassName('matched')).forEach(function(elem) {
         elem.classList.remove('matched');
     });
+    timeStamp = setInterval(time, 1000);
     populateBoard();
 }
 

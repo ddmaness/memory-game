@@ -111,15 +111,21 @@ function matchCheck(e) {
             cardToMatch.html = null;
             scoreDisplay.textContent = 'Moves: ' + score;
             document.body.classList.remove('checking');
-        }, 1000);
+        }, 200);
     }
     if (matches === 8) {
-        Array.prototype.slice.call(document.getElementsByClassName('selected')).forEach(function(elem) {
+        setTimeout(function() {
             setTimeout(function() {
-                elem.classList.remove('selected');
-            }, 200);
-        })
-        clearInterval(timeStamp);
+                Array.prototype.slice.call(document.getElementsByClassName('selected')).forEach(function(elem) {
+                    elem.classList.remove('selected');
+                });
+            }, 2000);
+            clearInterval(timeStamp);
+            document.getElementById('results-guesses').textContent = 'Guesses: ' + score;
+            document.getElementById('results-time').textContent = 'Time: ' + document.getElementById('timer').textContent;
+            document.getElementById('results-stars').innerHTML = document.getElementById('stars').innerHTML;
+            document.getElementById('results').classList.toggle('win');
+        }, 4000);
     }
 }
 
@@ -136,6 +142,7 @@ function reset() {
     });
     timeStamp = setInterval(time, 1000);
     populateBoard();
+    document.getElementById('results').classList.toggle('win');
 }
 
 populateBoard();

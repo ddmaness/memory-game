@@ -11,9 +11,16 @@ body.checking {
 #game {
     margin-top: -20px;
     display: flex;
+    align-items: stretch;
 }
 
 .score-board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #582A72; 
     flex-basis: 20%;
 }
 
@@ -98,11 +105,42 @@ body.checking {
     background-color: #AA3F39;
 }
 
-.results {
+#results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
     position: absolute;
-    height:100%;
+    top: -115vh;
+    height:105%;
     width:100%;
-    background-color: greenyellow;
+    z-index: 4;
+    background-color: #582A72;
+    -webkit-box-shadow: -2px 20px 43px 17px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 20px 43px 17px rgba(0,0,0,0.75);
+    box-shadow: -2px 20px 43px 17px rgba(0,0,0,0.75);
+    transition: all 2s ease-in-out;
+}
+
+#results.win {
+    top: 0;
+}
+
+#reset {
+    background-color: #582A72;
+    color: white;
+    height: 48px;
+    min-width: 48px;
+    border: 2px solid white;
+    transition: all 500ms;
+}
+
+#reset:hover {
+    color: #582A72;
+    background-color: white;
+    border: 2px solid #582A72;
+    cursor: pointer;
 }
 
 /*
@@ -631,7 +669,7 @@ Moon Card
 } 
 
 .card.matched .moon-cover {
-    animation: shift-left 1s forwards, color-change 1s forwards;
+    animation: shift-left 1s forwards, color-change 1s forwards 800ms;
 }
 
 @keyframes shift-left {

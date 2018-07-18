@@ -181,6 +181,7 @@ Game Over Modal
     min-width: 48px;
     border: 2px solid #fff;
     transition: all 500ms;
+    margin-bottom: 24px;
 }
 
 .reset:hover {

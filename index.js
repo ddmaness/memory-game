@@ -125,6 +125,11 @@ function populateBoard() {
             elem.classList.remove('correct');
         }
     })
+    setTimeout(function() {
+        Array.prototype.slice.call(document.getElementsByClassName('matched')).forEach(function(elem) {
+            elem.classList.remove('matched');
+        });
+    }, 300);
     let cardIndex = 0;
     // Create an array containing the html for two of each shape to be placed on the cards
     const shapesArr = [];
@@ -147,6 +152,10 @@ function populateBoard() {
     cardFronts.forEach(function(elem){
         elem.addEventListener('click', clickCard, true);
     });
+    const resetBtns = Array.prototype.slice.call(document.getElementsByClassName('reset'));
+    resetBtns.forEach(function(elem){
+        elem.addEventListener('click', reset);
+    })
 }
 
 //Handle card clicks
@@ -177,7 +186,15 @@ function clickCard(e) {
 }
 
 // Reset Game to starting values
-function reset() {
+function reset(e) {
+    if (e.target.classList.contains('restart')) {
+        Array.prototype.slice.call(document.getElementsByClassName('selected')).forEach(function(elem) {
+            elem.classList.remove('selected');
+        });
+        document.getElementById('timer').textContent = '00:00';
+        clearInterval(timeStamp);
+
+    }
     document.getElementById('score').textContent = 'Moves: 0';
     document.getElementById('stars').innerHTML = '&#9733; &#9733; &#9733;';
     score = 0;
@@ -185,12 +202,13 @@ function reset() {
     timer = 0;
     cardToMatch.element = null;
     cardToMatch.html = null;
-    Array.prototype.slice.call(document.getElementsByClassName('matched')).forEach(function(elem) {
-        elem.classList.remove('matched');
-    });
     timeStamp = setInterval(time, 1000);
-    populateBoard();
-    document.getElementById('results').classList.toggle('win');
+    setTimeout(function() {
+        populateBoard();
+    }, 500);
+    if (!e.target.classList.contains('restart')) {
+        document.getElementById('results').classList.toggle('win');
+    }
 }
 
 // Establish initial gameboard

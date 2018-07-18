@@ -174,7 +174,7 @@ Game Over Modal
     top: 0;
 }
 
-#reset {
+.reset {
     background-color: #582a72;
     color: #fff;
     height: 48px;
@@ -183,7 +183,7 @@ Game Over Modal
     transition: all 500ms;
 }
 
-#reset:hover {
+.reset:hover {
     color: #582a72;
     background-color: #fff;
     border: 2px solid #582a72;

@@ -73,7 +73,7 @@ function noMatch(target, scoreDisplay) {
         cardToMatch.element.classList.remove('incorrect');
         cardToMatch.element = null;
         cardToMatch.html = null;
-        scoreDisplay.textContent = 'Moves: ' + score;
+        scoreDisplay.textContent = 'Guesses: ' + score;
         document.body.classList.remove('checking');
     },1000);
 }
@@ -95,7 +95,7 @@ function match(target, scoreDisplay) {
         target.classList.add('matched');
         cardToMatch.element = null;
         cardToMatch.html = null;
-        scoreDisplay.textContent = 'Moves: ' + score;
+        scoreDisplay.textContent = 'Guesses: ' + score;
         document.body.classList.remove('checking');
     }, 200);
 }

@@ -76,6 +76,11 @@ body.checking {
     display: flex;
 }
 
+/*
+Thanks to Shay Howe's course on transforms for help on the card flipping
+animation https://learn.shayhowe.com/advanced-html-css/css-transforms/
+*/
+
 .card-container {
     cursor: pointer;
     width: 160px;

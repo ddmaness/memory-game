@@ -1,6 +1,6 @@
 # [Memory Game](https://udacity-memory-game.surge.sh/)
 
-This is a memory game made using vanilla JS as part of my course work for the Front-End Nanodegree from Udacity.
+This is a memory game made coursework for the Front-End Nanodegree from Udacity.
 
 ### How to Run the game:
 Either visit [this page](https://udacity-memory-game.surge.sh/), or clone the repository/download the zip to run the game locally in your browser of choice.
